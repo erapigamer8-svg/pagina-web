@@ -1,0 +1,12 @@
+{
+  "videoSrc": "grabaciones/ejemplo-norm.mp4",
+  "subtitulosSrc": "subtitulos/ejemplo.json",
+  "capturas": [
+    {
+      "src": "capturas/demo.png",
+      "desdeSegundo": 1.5,
+      "duracionSegundos": 3
+    }
+  ],
+  "msPorBloque": 1200
+}

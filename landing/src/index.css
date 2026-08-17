@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+:root {
+  --tinta: #f4f2ee;
+  --fondo: #0a0a0b;
+  --senal: #1fbf62;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  background: var(--fondo);
+}
+
+body {
+  font-family: ui-sans-serif, "Segoe UI Variable Display", "Segoe UI", system-ui,
+    -apple-system, "Helvetica Neue", sans-serif;
+  color: var(--tinta);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Tipografía apretada, estilo editorial */
+.apretado {
+  letter-spacing: -0.045em;
+  line-height: 0.92;
+  font-weight: 700;
+}
+
+.etiqueta {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* Los textos superpuestos se leen sobre cualquier fondo */
+.exclusion {
+  mix-blend-mode: exclusion;
+}
+
+/**
+ * Entradas en CSS, no en JS.
+ * El contenido es visible por defecto: si el JavaScript falla, la página se lee igual.
+ * Con JS, la animación solo lo mejora.
+ */
+@keyframes entra {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.entra {
+  animation: entra 0.7s cubic-bezier(0.25, 0.1, 0.25, 1) both;
+}
+
+.bp-card {
+  will-change: transform;
+}
+
+/* El cursor propio solo en escritorio con ratón */
+@media (hover: hover) and (pointer: fine) and (min-width: 1024px) {
+  .sin-cursor {
+    cursor: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bp-card {
+    will-change: auto;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--senal);
+  outline-offset: 3px;
+}

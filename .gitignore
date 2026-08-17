@@ -1,0 +1,28 @@
+# Dependencias: se reinstalan con npm install
+node_modules/
+
+# Compilados y despliegues
+dist/
+.vercel/
+*.tsbuildinfo
+
+# Temporales de Remotion y Whisper
+remotion-app/out/
+remotion-app/.tmp/
+remotion-app/tmp.json
+remotion-app/whisper.cpp/
+
+# Material pesado: se regenera o lo tienes en su origen
+salida/
+remotion-app/public/grabaciones/
+remotion-app/public/subtitulos/
+landing/_originales/
+landing/capturas/
+
+# Sistema
+Thumbs.db
+.DS_Store
+*.log
+
+# NOTA: landing/public/hero.mp4 SÍ entra en el repo (3,5 MB).
+# Hace falta para compilar y desplegar la landing.

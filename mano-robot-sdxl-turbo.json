@@ -1,0 +1,468 @@
+{
+  "id": "b2c4e8a1-5d3f-4a92-b7c1-9e6f0a3d8c47",
+  "revision": 0,
+  "last_node_id": 10,
+  "last_link_id": 9,
+  "nodes": [
+    {
+      "id": 4,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        -20,
+        60
+      ],
+      "size": [
+        380,
+        98
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            1
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 1,
+          "links": [
+            2,
+            3
+          ]
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 2,
+          "links": [
+            4
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.45",
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "DreamShaperXL_Turbo_v2_1.safetensors"
+      ]
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        420,
+        60
+      ],
+      "size": [
+        440,
+        220
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            5
+          ]
+        }
+      ],
+      "title": "Prompt POSITIVO - pega aqui cada una de las 4 variantes",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.45",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "black glossy robotic prosthetic hand, index finger extended pointing up toward the upper right corner of the frame, other fingers curled into the palm, segmented articulated fingers with visible mechanical joints and hinges, matte black polymer shell with light gray palm accents, bionic hand design, wrist entering from the lower left, clean white background, soft studio lighting, subtle soft shadow, product photography, sharp focus, high detail"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 7,
+      "type": "CLIPTextEncode",
+      "pos": [
+        420,
+        330
+      ],
+      "size": [
+        440,
+        160
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            6
+          ]
+        }
+      ],
+      "title": "Prompt NEGATIVO - no lo toques",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.45",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "human hand, skin, flesh, veins, blurry, low quality, deformed, extra fingers, missing fingers, fused fingers, mutated, text, watermark, signature, cluttered background, dark background, colored background, multiple hands, cropped, toy, cartoon"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 5,
+      "type": "EmptyLatentImage",
+      "pos": [
+        -20,
+        220
+      ],
+      "size": [
+        380,
+        106
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            7
+          ]
+        }
+      ],
+      "title": "Tamano y cuantas a la vez",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.45",
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        2
+      ]
+    },
+    {
+      "id": 3,
+      "type": "KSampler",
+      "pos": [
+        920,
+        60
+      ],
+      "size": [
+        320,
+        262
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 1
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 5
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 6
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            8
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.45",
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        427318905612,
+        "fixed",
+        8,
+        2,
+        "dpmpp_sde",
+        "karras",
+        1
+      ]
+    },
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        1290,
+        60
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 8
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            9
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.45",
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 9,
+      "type": "SaveImage",
+      "pos": [
+        1290,
+        160
+      ],
+      "size": [
+        520,
+        500
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 9
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.45",
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "mano-robot"
+      ]
+    },
+    {
+      "id": 10,
+      "type": "MarkdownNote",
+      "pos": [
+        -560,
+        60
+      ],
+      "size": [
+        510,
+        620
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "COMO USARLO - lee esto",
+      "properties": {},
+      "widgets_values": [
+        "## Mano robot apuntando - SDXL Turbo\n\nLas 4 variantes. Pega cada bloque completo en el nodo\nVERDE, una a la vez, y dale a Ejecutar.\n\n---\n\nEstilo: protesis bionica negra brillante sobre fondo\nblanco, articulaciones segmentadas visibles.\n\n### 1. INDICE arriba-derecha  (ya puesto)\n```\nblack glossy robotic prosthetic hand, index finger\nextended pointing up toward the upper right corner of the\nframe, other fingers curled into the palm, segmented\narticulated fingers with visible mechanical joints and\nhinges, matte black polymer shell with light gray palm\naccents, bionic hand design, wrist entering from the lower\nleft, clean white background, soft studio lighting, subtle\nsoft shadow, product photography, sharp focus, high detail\n```\n\n### 2. INDICE arriba-izquierda\n```\nblack glossy robotic prosthetic hand, index finger\nextended pointing up toward the upper left corner of the\nframe, other fingers curled into the palm, segmented\narticulated fingers with visible mechanical joints and\nhinges, matte black polymer shell with light gray palm\naccents, bionic hand design, wrist entering from the lower\nright, clean white background, soft studio lighting,\nsubtle soft shadow, product photography, sharp focus,\nhigh detail\n```\n\n**ATAJO:** la 2 es el espejo exacto de la 1. Si la 1 te\nsale bien, no generes la 2: voltea la imagen en horizontal\nen cualquier editor y ya la tienes, ademas identica de\nmaterial y luz.\n\n### 3. INDICE abajo-izquierda\n```\nblack glossy robotic prosthetic hand, index finger\nextended pointing down toward the lower left corner of the\nframe, other fingers curled into the palm, segmented\narticulated fingers with visible mechanical joints and\nhinges, matte black polymer shell with light gray palm\naccents, bionic hand design, wrist entering from the upper\nright, clean white background, soft studio lighting,\nsubtle soft shadow, product photography, sharp focus,\nhigh detail\n```\n\n### 4. PULGAR abajo-derecha\n```\nblack glossy robotic prosthetic hand in a closed fist with\nthe thumb extended pointing down toward the lower right\ncorner, other fingers curled into the palm, segmented\narticulated fingers with visible mechanical joints and\nhinges, matte black polymer shell with light gray palm\naccents, bionic hand design, wrist entering from the upper\nleft, clean white background, soft studio lighting, subtle\nsoft shadow, product photography, sharp focus, high detail\n```\n\n---\n\n### El truco de la consistencia\nEl seed esta en **fixed** a proposito. Asi las 4 variantes\nsalen con el mismo material, la misma luz y el mismo\ndiseno de mano. Si cambias el seed, cambia la mano entera.\n\n### Cuenta con descartar\nLas diagonales y el pulgar son lo mas dificil para el\nmodelo. Sube el numero de al lado de Ejecutar a 4 y\nquedate con la buena. Es normal tirar la mitad.\n\nSi una direccion se resiste del todo: genera la contraria\n(que suele salir mejor) y **espejala** despues en\ncualquier editor. Nadie nota que una mano robot es la\nderecha o la izquierda.\n\n### Ajustes del Turbo - no los cambies\n- steps: 8\n- cfg: 2\n- sampler: dpmpp_sde + karras\n\nEs un modelo Turbo. Con cfg 7 (lo normal en SDXL) las\nimagenes salen quemadas.\n\n### Si sale out of memory\nBaja `batch_size` de 2 a 1 en el nodo de tamano.\n\n### Donde se guardan\nComfyUI/output/  con el nombre `mano-robot_00001.png`\n\n### Para fondo transparente\nGenera con fondo oscuro liso (como esta ahora) y quita el\nfondo despues. Sale mas limpio que pedirle fondo\ntransparente al modelo.\n"
+      ],
+      "color": "#222",
+      "bgcolor": "#000"
+    }
+  ],
+  "links": [
+    [
+      1,
+      4,
+      0,
+      3,
+      0,
+      "MODEL"
+    ],
+    [
+      2,
+      4,
+      1,
+      6,
+      0,
+      "CLIP"
+    ],
+    [
+      3,
+      4,
+      1,
+      7,
+      0,
+      "CLIP"
+    ],
+    [
+      4,
+      4,
+      2,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      5,
+      6,
+      0,
+      3,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      6,
+      7,
+      0,
+      3,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      7,
+      5,
+      0,
+      3,
+      3,
+      "LATENT"
+    ],
+    [
+      8,
+      3,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      9,
+      8,
+      0,
+      9,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Modelo y tamano",
+      "bounding": [
+        -40,
+        10,
+        420,
+        340
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "Prompts",
+      "bounding": [
+        400,
+        10,
+        480,
+        500
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 3,
+      "title": "Generacion",
+      "bounding": [
+        900,
+        10,
+        360,
+        340
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.7,
+      "offset": [
+        620,
+        60
+      ]
+    },
+    "frontendVersion": "1.27.10"
+  },
+  "version": 0.4
+}
