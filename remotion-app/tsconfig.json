@@ -6,6 +6,9 @@
     "jsx": "react-jsx",
     "strict": true,
     "noEmit": true,
+    // Los scripts de scripts/ se importan entre si con extension .mts;
+    // tsx los resuelve en ejecucion, pero tsc necesita este permiso.
+    "allowImportingTsExtensions": true,
     "lib": ["es2015"],
     "esModuleInterop": true,
     "skipLibCheck": true,

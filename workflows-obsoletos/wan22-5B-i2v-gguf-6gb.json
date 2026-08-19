@@ -192,7 +192,7 @@
         "Node name for S&R": "CreateVideo"
       },
       "widgets_values": [
-        24
+        16
       ]
     },
     {
@@ -270,9 +270,9 @@
         "Node name for S&R": "Wan22ImageToVideoLatent"
       },
       "widgets_values": [
-        352,
         640,
-        49,
+        352,
+        121,
         1
       ]
     },
@@ -353,7 +353,7 @@
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
-        "色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走"
+        "色调艳丽，过曝，细节模糊不清，字幕，风格，作品，画作，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，畸形的，毁容的，杂乱的背景, camera movement, camera pan, camera zoom, dolly, handheld shake, cuts, jump cut, scene change, fast motion, flickering, text, letters, watermark, ui, icons, people, hands"
       ],
       "color": "#322",
       "bgcolor": "#533"
@@ -396,7 +396,7 @@
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
-        "The camera slowly pushes in. Subtle natural movement, soft cinematic lighting, shallow depth of field, smooth motion."
+        "Static camera, no cuts. Extremely slow, continuous motion: the warm light shifts gradually across the wooden surface and the green glow from the screen pulses very subtly. The phone stays perfectly still. Single continuous take, constant speed, no pauses, no camera movement. Photorealistic, dark, cinematic."
       ],
       "color": "#232",
       "bgcolor": "#353"
@@ -523,7 +523,7 @@
       "title": "Configuracion GGUF - 6 GB VRAM",
       "properties": {},
       "widgets_values": [
-        "## Wan 2.2 TI2V-5B en GGUF\nMontado para RTX 4050 Laptop (6 GB VRAM).\n\n**Ya viene configurado:**\n- Modelo: `Wan2.2-TI2V-5B-Q5_K_M.gguf` (models/unet)\n- Text encoder: `umt5-xxl-encoder-Q5_K_M.gguf` (models/text_encoders)\n- VAE: `wan2.2_vae.safetensors` (models/vae)\n- Nodo de imagen ACTIVADO (modo imagen a video)\n- Tamano: 352 x 640 vertical, 49 frames (~2 s)\n\n**Para usarlo:**\n1. Sube tu imagen en el nodo `Load Image`\n2. Escribe el prompt en ingles (nodo verde)\n3. Ejecutar\n\n**Si sale out of memory:**\nBaja `length` a 33 y el tamano a 320 x 576 en el nodo\n`Wan22ImageToVideoLatent`.\n\n**Para subir calidad** (si va sobrado):\nSube a 480 x 848 y `length` a 81.\n\n**Para texto a video** (sin imagen de partida):\nSelecciona el nodo `Load Image` y pulsa Ctrl+B\npara desactivarlo.\n"
+        "## Wan 2.2 TI2V-5B en GGUF\nRTX 4050 Laptop (6 GB VRAM).\n\n**Configurado para el plano del telefono:**\n- Tamano: **640 x 352 horizontal** (16:9)\n- `length`: **121 frames**\n- `CreateVideo` fps: **16**\n- 121 / 16 = **7,5 segundos**\n\n**Para usarlo:**\n1. Sube tu imagen 16:9 en el nodo `Load Image`\n2. El prompt ya esta puesto (nodo verde)\n3. Ejecutar\n\n---\n\n### SI SALE OUT OF MEMORY\n121 frames es exigente para 6 GB. Baja en este orden:\n\n1. `length` de 121 a **81** -> 5 s a 16 fps\n2. `length` a **61** -> 3,8 s\n3. Si aun asi peta: tamano a **512 x 288**\n\nLos valores validos de `length` son 4n+1:\n49, 61, 81, 101, 121. No pongas 100 ni 120.\n\n### SI QUIERES MAS DURACION SIN MAS VRAM\nEl prompt pide movimiento *extremadamente lento*, asi que\nse presta a estirarlo en post: genera 81 frames y ralentiza\nel clip en Remotion. Un 0,6x sobre 5 s te da 8 s y el\nmovimiento queda aun mas suave. Sale mas barato que\npelear con la VRAM.\n\n### CAMBIO EN EL PROMPT NEGATIVO\nQuite `静态` (estatico) y `静止不动的画面` (imagen inmovil)\ndel negativo original de WAN. Estaban ahi para evitar que\nel modelo generase un video congelado, pero tu plano pide\njusto camara quieta y escena casi inmovil: dejarlos era\npelear contra tu propio prompt.\n\nEn su lugar hay terminos en ingles contra movimiento de\ncamara, cortes y parpadeos.\n\n### PARA TEXTO A VIDEO (sin imagen)\nSelecciona `Load Image` y pulsa Ctrl+B.\n"
       ],
       "color": "#222",
       "bgcolor": "#000"

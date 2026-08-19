@@ -1,5 +1,5 @@
 {
-  "id": "b2c4e8a1-5d3f-4a92-b7c1-9e6f0a3d8c47",
+  "id": "d7f1a3c9-8b24-4e56-a1d0-3c9e7b2f60a8",
   "revision": 0,
   "last_node_id": 10,
   "last_link_id": 9,
@@ -64,7 +64,7 @@
       ],
       "size": [
         440,
-        220
+        240
       ],
       "flags": {},
       "order": 2,
@@ -86,14 +86,14 @@
           ]
         }
       ],
-      "title": "Prompt POSITIVO - pega aqui cada una de las 4 variantes",
+      "title": "Prompt POSITIVO",
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.45",
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
-        "black glossy robotic prosthetic hand, index finger extended pointing up toward the upper right corner of the frame, other fingers curled into the palm, segmented articulated fingers with visible mechanical joints and hinges, matte black polymer shell with light gray palm accents, bionic hand design, wrist entering from the lower left, clean white background, soft studio lighting, subtle soft shadow, product photography, sharp focus, high detail"
+        "a modern smartphone resting on a dark wood table, slightly tilted overhead angle, the screen shows one single flat solid green rounded rectangle, completely empty and blank, uniform green color with no content inside, no text, no icons, no interface, the green glow illuminates the wood surface around it, the rest of the scene falls into shadow, a single warm light source coming from the left, very dark clean background, no objects, realistic photography, shallow depth of field, fine film grain, cinematic lighting, moody"
       ],
       "color": "#232",
       "bgcolor": "#353"
@@ -103,11 +103,11 @@
       "type": "CLIPTextEncode",
       "pos": [
         420,
-        330
+        350
       ],
       "size": [
         440,
-        160
+        170
       ],
       "flags": {},
       "order": 3,
@@ -129,14 +129,14 @@
           ]
         }
       ],
-      "title": "Prompt NEGATIVO - no lo toques",
+      "title": "Prompt NEGATIVO",
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.45",
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
-        "human hand, skin, flesh, veins, blurry, low quality, deformed, extra fingers, missing fingers, fused fingers, mutated, text, watermark, signature, cluttered background, dark background, colored background, multiple hands, cropped, toy, cartoon"
+        "text, letters, words, numbers, typography, watermark, logo, brand, app icons, buttons, user interface, home screen, chat bubble, message bubble, notification, keyboard, status bar, gradient screen, patterned screen, cluttered, busy background, bright, overexposed, flat lighting, blurry, low quality, deformed, people, hands, fingers, multiple phones, tablet, laptop"
       ],
       "color": "#322",
       "bgcolor": "#533"
@@ -166,15 +166,15 @@
           ]
         }
       ],
-      "title": "Tamano y cuantas a la vez",
+      "title": "Tamano 16:9 - nativo SDXL",
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.45",
         "Node name for S&R": "EmptyLatentImage"
       },
       "widgets_values": [
-        1024,
-        1024,
+        1344,
+        768,
         2
       ]
     },
@@ -230,7 +230,7 @@
         "Node name for S&R": "KSampler"
       },
       "widgets_values": [
-        427318905612,
+        612390847215,
         "fixed",
         8,
         2,
@@ -290,8 +290,8 @@
         160
       ],
       "size": [
-        520,
-        500
+        560,
+        420
       ],
       "flags": {},
       "order": 6,
@@ -310,7 +310,7 @@
         "Node name for S&R": "SaveImage"
       },
       "widgets_values": [
-        "mano-robot"
+        "telefono-mesa"
       ]
     },
     {
@@ -322,17 +322,17 @@
       ],
       "size": [
         510,
-        620
+        560
       ],
       "flags": {},
       "order": 7,
       "mode": 0,
       "inputs": [],
       "outputs": [],
-      "title": "COMO USARLO - lee esto",
+      "title": "COMO USARLO",
       "properties": {},
       "widgets_values": [
-        "## Mano robot apuntando - SDXL Turbo\n\nLas 4 variantes. Pega cada bloque completo en el nodo\nVERDE, una a la vez, y dale a Ejecutar.\n\n---\n\nEstilo: protesis bionica negra brillante sobre fondo\nblanco, articulaciones segmentadas visibles.\n\n### 1. INDICE arriba-derecha  (ya puesto)\n```\nblack glossy robotic prosthetic hand, index finger\nextended pointing up toward the upper right corner of the\nframe, other fingers curled into the palm, segmented\narticulated fingers with visible mechanical joints and\nhinges, matte black polymer shell with light gray palm\naccents, bionic hand design, wrist entering from the lower\nleft, clean white background, soft studio lighting, subtle\nsoft shadow, product photography, sharp focus, high detail\n```\n\n### 2. INDICE arriba-izquierda\n```\nblack glossy robotic prosthetic hand, index finger\nextended pointing up toward the upper left corner of the\nframe, other fingers curled into the palm, segmented\narticulated fingers with visible mechanical joints and\nhinges, matte black polymer shell with light gray palm\naccents, bionic hand design, wrist entering from the lower\nright, clean white background, soft studio lighting,\nsubtle soft shadow, product photography, sharp focus,\nhigh detail\n```\n\n**ATAJO:** la 2 es el espejo exacto de la 1. Si la 1 te\nsale bien, no generes la 2: voltea la imagen en horizontal\nen cualquier editor y ya la tienes, ademas identica de\nmaterial y luz.\n\n### 3. INDICE abajo-izquierda\n```\nblack glossy robotic prosthetic hand, index finger\nextended pointing down toward the lower left corner of the\nframe, other fingers curled into the palm, segmented\narticulated fingers with visible mechanical joints and\nhinges, matte black polymer shell with light gray palm\naccents, bionic hand design, wrist entering from the upper\nright, clean white background, soft studio lighting,\nsubtle soft shadow, product photography, sharp focus,\nhigh detail\n```\n\n### 4. PULGAR abajo-derecha\n```\nblack glossy robotic prosthetic hand in a closed fist with\nthe thumb extended pointing down toward the lower right\ncorner, other fingers curled into the palm, segmented\narticulated fingers with visible mechanical joints and\nhinges, matte black polymer shell with light gray palm\naccents, bionic hand design, wrist entering from the upper\nleft, clean white background, soft studio lighting, subtle\nsoft shadow, product photography, sharp focus, high detail\n```\n\n---\n\n### El truco de la consistencia\nEl seed esta en **fixed** a proposito. Asi las 4 variantes\nsalen con el mismo material, la misma luz y el mismo\ndiseno de mano. Si cambias el seed, cambia la mano entera.\n\n### Cuenta con descartar\nLas diagonales y el pulgar son lo mas dificil para el\nmodelo. Sube el numero de al lado de Ejecutar a 4 y\nquedate con la buena. Es normal tirar la mitad.\n\nSi una direccion se resiste del todo: genera la contraria\n(que suele salir mejor) y **espejala** despues en\ncualquier editor. Nadie nota que una mano robot es la\nderecha o la izquierda.\n\n### Ajustes del Turbo - no los cambies\n- steps: 8\n- cfg: 2\n- sampler: dpmpp_sde + karras\n\nEs un modelo Turbo. Con cfg 7 (lo normal en SDXL) las\nimagenes salen quemadas.\n\n### Si sale out of memory\nBaja `batch_size` de 2 a 1 en el nodo de tamano.\n\n### Donde se guardan\nComfyUI/output/  con el nombre `mano-robot_00001.png`\n\n### Para fondo transparente\nGenera con fondo oscuro liso (como esta ahora) y quita el\nfondo despues. Sale mas limpio que pedirle fondo\ntransparente al modelo.\n"
+        "## Telefono sobre mesa oscura - 16:9\n\nEl prompt esta traducido al ingles. SDXL entiende el\nespanol a medias y pierde matices como \"cenital\" o\n\"poca profundidad de campo\".\n\n### Tamano\n**1344 x 768** es la resolucion 16:9 nativa de SDXL.\nNo generes a 1920x1080 directamente: SDXL fue entrenado\ncerca de 1 megapixel y por encima empieza a duplicar\nelementos (dos telefonos, mesas repetidas).\n\nSi lo necesitas en 1920x1080, genera aqui y reescala\ndespues.\n\n### IMPORTANTE - recuperar TU imagen\nEl seed esta en `fixed`, pero el numero que trae NO es\nel de la imagen que generaste antes.\n\nPara volver a esa toma exacta:\n**arrastra tu PNG generado sobre el lienzo de ComfyUI.**\nComfyUI lee los metadatos del archivo y restaura el\nworkflow entero con su seed. Copia ese numero al campo\nseed de aqui.\n\nSin ese seed, sale un telefono distinto.\n\n### Aun con el mismo seed, va a cambiar algo\nCambiar el prompt mueve la imagen aunque el seed sea el\nmismo. Conservaras el ambiente, la luz y el encuadre\naproximado, pero no es una edicion quirurgica: puede\nmoverse el angulo del telefono o la veta de la madera.\n\nSi necesitas que el resto quede intacto pixel a pixel,\nesto no es la herramienta. Ver abajo.\n\n### El rectangulo verde liso\nUn verde perfectamente plano y vacio es de lo que peor\nhace un modelo de imagen: siempre quiere meter reflejos,\ndegradados o garabatos que imitan texto.\n\nLo mas fiable con diferencia es generar el telefono con\nla pantalla encendida y **dibujar el rectangulo verde\nencima en cualquier editor**. Sale uniforme de verdad,\ntarda dos minutos y no depende de la suerte.\n\n### Ajustes Turbo - no los toques\n- steps: 8\n- cfg: 2\n- sampler: dpmpp_sde + karras\n\n### Si sale out of memory\nBaja `batch_size` de 2 a 1.\n\n### Donde se guardan\nComfyUI/output/  como `telefono-mesa_00001.png`\n"
       ],
       "color": "#222",
       "bgcolor": "#000"
@@ -433,7 +433,7 @@
         400,
         10,
         480,
-        500
+        530
       ],
       "color": "#3f789e",
       "font_size": 24,
