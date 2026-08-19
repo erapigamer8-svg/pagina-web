@@ -17,24 +17,11 @@ const verde = "#1fbf62";
 
 export function Maqueta({ prueba }: { prueba: Prueba }) {
   if (prueba.imagen) {
-    // Los .mp4 se pintan como vídeo en bucle y sin audio; el resto, como imagen.
-    const esVideo = /\.(mp4|webm)$/i.test(prueba.imagen);
-    const ruta = prueba.imagen.startsWith("/") ? prueba.imagen : `/${prueba.imagen}`;
-
-    return esVideo ? (
-      <video
-        src={ruta}
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="h-full w-full object-contain"
-      />
-    ) : (
+    return (
       <img
-        src={ruta}
+        src={prueba.imagen}
         alt={prueba.titulo}
-        className="h-full w-full object-contain"
+        className="h-full w-full object-cover"
         loading="lazy"
       />
     );

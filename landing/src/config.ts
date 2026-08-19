@@ -176,15 +176,12 @@ export const PRUEBAS: Prueba[] = [
   {
     tipo: "flujo",
     titulo: "El flujo por dentro",
-    detalle: "Camino n8n: entra el mensaje, decide si es una reserva y responde.",
-    imagen: "prueba-n8n.mp4",
+    detalle: "Camino n8n: tu WhatsApp hablando con tu agenda.",
   },
   {
     tipo: "pipeline",
-    titulo: "860 conversaciones gestionadas",
-    detalle:
-      "Sistema en producción para una empresa de fumigación. Datos de sus clientes ocultados.",
-    imagen: "prueba-kommo.jpg",
+    titulo: "Nadie se queda a medias",
+    detalle: "Camino Kommo: cada conversación en su etapa, a la vista.",
   },
   {
     tipo: "chat",
