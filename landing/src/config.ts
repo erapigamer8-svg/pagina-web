@@ -147,60 +147,75 @@ export const CIERRE = {
   boton: "Hablamos",
 };
 
-/** Las piezas de la galería: la prueba de que esto funciona. */
+/**
+ * Una prueba de la banda.
+ *
+ * Todas son material propio: capturas o grabaciones de sistemas que monté yo.
+ * Nada de esquemas dibujados — un dibujo explica, pero no demuestra.
+ */
 export type Prueba = {
-  tipo: "chat" | "flujo" | "agenda" | "pipeline" | "recordatorio";
+  /** Archivo en public/. Un .mp4/.webm se reproduce en bucle; el resto es imagen. */
+  medio: string;
+  /** Insignia de arriba. Dice QUÉ es, no lo que hace: es lo que sostiene la prueba. */
+  etiqueta: string;
   titulo: string;
   detalle: string;
   /**
-   * Ruta a una captura REAL (en public/). Cuando la pongas, sustituye a la maqueta.
+   * Relleno de las bandas que sobran alrededor de la captura.
    *
-   * Las maquetas son esquemas dibujados, no capturas. Sirven para que se entienda
-   * qué hace el sistema, pero no son prueba de nada. Una captura de verdad de tu
-   * n8n o tu Kommo convence diez veces más — cámbialas en cuanto las tengas.
+   * Va con la IMAGEN, no con el tema de la página: se elige del color de fondo
+   * de la propia captura para que el borde no se note. Por eso no se invierte
+   * cuando se cambian los colores de la sección.
    */
-  imagen?: string;
+  fondo: string;
+};
+
+export const SECCION_PRUEBAS = {
+  antetitulo: "Cómo se ve por dentro",
+  titulo: ["Sin cambiar", "de herramientas."],
+  texto: "Tu WhatsApp sigue siendo tu WhatsApp. Lo que cambia es lo que pasa por detrás.",
+  aviso: "Todo lo que ves es material propio.",
+  /** Con ratón la banda se para al pasar por encima; en un táctil se desliza. */
+  avisoRaton: "Pasa el ratón para pararla, o pulsa una tarjeta para verla en grande.",
+  avisoTactil: "Desliza para verlas todas. Pulsa una para verla en grande.",
 };
 
 export const PRUEBAS: Prueba[] = [
   {
-    tipo: "chat",
-    titulo: "Las 23:41, y contesta",
-    detalle: "La pregunta llega cuando has cerrado. Igual se resuelve.",
+    medio: "/prueba-whatsapp.png",
+    etiqueta: "conversación real",
+    titulo: "Mi propio WhatsApp, a las 00:12",
+    detalle:
+      "Antes de ofrecérselo a nadie lo probé en mi propio número. Así contestó de madrugada.",
+    fondo: "#0b141a",
   },
   {
-    tipo: "agenda",
-    titulo: "La cita entra sola",
-    detalle: "Del mensaje al calendario, sin que nadie apunte nada.",
-  },
-  {
-    tipo: "flujo",
+    medio: "/prueba-n8n.mp4",
+    etiqueta: "grabación real",
     titulo: "El flujo por dentro",
-    detalle: "Camino n8n: tu WhatsApp hablando con tu agenda.",
+    detalle: "n8n ejecutándose: entra el mensaje, decide si es una reserva y responde.",
+    fondo: "#0d0d0f",
   },
   {
-    tipo: "pipeline",
-    titulo: "Nadie se queda a medias",
-    detalle: "Camino Kommo: cada conversación en su etapa, a la vista.",
+    medio: "/prueba-kommo.jpg",
+    etiqueta: "sistema en producción",
+    titulo: "860 conversaciones gestionadas",
+    detalle: "Empresa de fumigación. Nombres y mensajes de sus clientes ocultados.",
+    fondo: "#ffffff",
   },
   {
-    tipo: "chat",
-    titulo: "Pregunta antes de pasártelo",
-    detalle: "Averigua qué necesita y te llega ya filtrado.",
+    medio: "/prueba-salesbot.jpg",
+    etiqueta: "bot en funcionamiento",
+    titulo: "El bot por dentro",
+    detalle: "Califica al cliente antes de pasártelo. Con sus estadísticas de uso reales.",
+    fondo: "#ffffff",
   },
   {
-    tipo: "recordatorio",
-    titulo: "Se lo recuerda por ti",
-    detalle: "Aviso el día antes. Menos gente que no aparece.",
-  },
-  {
-    tipo: "agenda",
-    titulo: "Sin huecos duplicados",
-    detalle: "Solo ofrece lo que de verdad tienes libre.",
-  },
-  {
-    tipo: "flujo",
-    titulo: "Se habla con lo que ya usas",
-    detalle: "Tu agenda, tu web, tu facturación. Sin cambiar de herramientas.",
+    medio: "/prueba-agente.jpg",
+    etiqueta: "montado por mí",
+    titulo: "Recepcionista virtual",
+    detalle:
+      "Diez herramientas: consulta la agenda, reserva, reprograma y escala a una persona cuando toca.",
+    fondo: "#0d0d0f",
   },
 ];

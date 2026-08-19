@@ -1,40 +1,13 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Cursor } from "./components/Cursor";
 import { ChatDemo } from "./components/ChatDemo";
-import { Maqueta } from "./components/Maquetas";
+import { BandaPruebas } from "./components/BandaPruebas";
 import { HeroVideo } from "./components/HeroVideo";
 import { BotonWhatsApp } from "./components/BotonWhatsApp";
 import { Formulario } from "./components/Formulario";
-import { CIERRE, FONDO_VIDEO, HERO, MARCA, PRUEBAS, VIDEO_HERO } from "./config";
+import { CIERRE, FONDO_VIDEO, HERO, MARCA, VIDEO_HERO } from "./config";
 
 const HAY_VIDEO = Boolean(VIDEO_HERO);
-
-/** Reparte las pruebas en una rejilla desordenada, como la referencia. */
-function construirRejilla(total: number, cols: number): number[] {
-  const celdas: number[] = [];
-  let puesto = 0;
-  for (let r = 0; puesto < total; r++) {
-    const fila = new Array(cols).fill(-1);
-    const a = (r * 2 + (r % 2)) % cols;
-    fila[a] = puesto++;
-    if (r % 3 === 0 && puesto < total) {
-      let b = (a + 2) % cols;
-      if (b === a) b = (a + 1) % cols;
-      fila[b] = puesto++;
-    }
-    celdas.push(...fila);
-  }
-  return celdas;
-}
-
-const columnasSegunAncho = () => {
-  const w = window.innerWidth;
-  // En móvil una sola columna: con dos, la tarjeta queda tan pequeña que ni el
-  // esquema ni el texto se leen.
-  if (w < 640) return 1;
-  if (w < 1024) return 2;
-  return 4;
-};
 
 export default function App() {
   const espaciador = useRef<HTMLDivElement>(null);
@@ -45,17 +18,6 @@ export default function App() {
   const pie = useRef<HTMLDivElement>(null);
   const hero = useRef<HTMLDivElement>(null);
 
-  const [cols, setCols] = useState(4);
-
-  useEffect(() => {
-    setCols(columnasSegunAncho());
-    const alRedimensionar = () => setCols(columnasSegunAncho());
-    window.addEventListener("resize", alRedimensionar);
-    return () => window.removeEventListener("resize", alRedimensionar);
-  }, []);
-
-  const rejilla = useMemo(() => construirRejilla(PRUEBAS.length, cols), [cols]);
-
   useEffect(() => {
     let raf = 0;
 
@@ -64,10 +26,18 @@ export default function App() {
       const scrollY = window.scrollY;
 
       const alturaInterior = interior.current?.scrollHeight ?? vh;
-      const maxScroll = Math.max(0, alturaInterior - vh);
+      // Lo que de verdad se puede desplazar el contenido del panel.
+      const desplazable = Math.max(0, alturaInterior - vh);
+      /**
+       * Permanencia: scroll que el panel aguanta QUIETO antes de que empiece el
+       * cierre. La banda se mueve sola y cabe en una pantalla, así que sin esto
+       * `desplazable` sale casi cero y el velo del cierre arranca encima de ella.
+       */
+      const permanencia = vh * 0.9;
+      const recorridoPanel = desplazable + permanencia;
 
       if (espaciador.current) {
-        espaciador.current.style.height = `${vh + maxScroll + 2 * vh}px`;
+        espaciador.current.style.height = `${vh + recorridoPanel + 2 * vh}px`;
       }
 
       // Fase 1: el panel sube tapando el hero
@@ -85,25 +55,11 @@ export default function App() {
       // Fase 2: el contenido del panel se desplaza hacia arriba
       const avance = Math.max(0, scrollY - vh);
       if (interior.current) {
-        interior.current.style.transform = `translate3d(0, ${-Math.min(avance, maxScroll)}px, 0)`;
+        interior.current.style.transform = `translate3d(0, ${-Math.min(avance, desplazable)}px, 0)`;
       }
 
-      // Escalado de cada tarjeta según dónde esté en pantalla
-      const tarjetas = document.querySelectorAll<HTMLElement>(".bp-card");
-      tarjetas.forEach((t) => {
-        const r = t.getBoundingClientRect();
-        if (r.bottom <= 0 || r.top >= vh) {
-          t.style.transform = "scale(0)";
-          return;
-        }
-        const entrada = Math.min(1, (vh - r.top) / (vh * 0.6));
-        const salida = Math.min(1, r.bottom / (vh * 0.4));
-        const escala = Math.max(0, Math.min(entrada, salida));
-        t.style.transform = `scale(${escala.toFixed(3)})`;
-      });
-
       // Cierre: velo blanco, formulario y pie
-      const inicioCierre = vh + maxScroll;
+      const inicioCierre = vh + recorridoPanel;
       const p = Math.max(0, Math.min(1, (scrollY - inicioCierre) / (vh * 0.8)));
       if (velo.current) velo.current.style.opacity = String(p);
       if (cta.current) {
@@ -117,7 +73,7 @@ export default function App() {
 
     raf = requestAnimationFrame(marco);
     return () => cancelAnimationFrame(raf);
-  }, [cols, rejilla]);
+  }, []);
 
   return (
     <div
@@ -263,45 +219,13 @@ export default function App() {
         className="fixed inset-0 z-10 overflow-hidden"
         style={{ background: "#000", transform: "translate3d(0,100vh,0)" }}
       >
-        <div ref={interior} className="w-full" style={{ paddingTop: "min(360px, 34vh)" }}>
-          <div
-            className="mx-auto grid w-full max-w-[1500px] gap-4 px-4 md:gap-6 md:px-8"
-            style={{ gridTemplateColumns: `repeat(${cols}, minmax(0,1fr))` }}
-          >
-            {rejilla.map((indice, i) => {
-              if (indice < 0) return <div key={i} style={{ aspectRatio: "2/3" }} />;
-              const prueba = PRUEBAS[indice];
-              const columna = i % cols;
-              const origen = columna < cols / 2 ? "right bottom" : "left bottom";
-              return (
-                <div key={i} style={{ aspectRatio: cols === 1 ? "4/5" : "2/3" }}>
-                  <div
-                    className="bp-card flex h-full w-full flex-col overflow-hidden rounded-sm"
-                    style={{
-                      transformOrigin: origen,
-                      transform: "scale(0)",
-                      background: "#0e0e10",
-                      border: "1px solid rgba(255,255,255,.10)",
-                    }}
-                  >
-                    {/* overflow-hidden aquí también: sin esto el esquema se
-                        desborda y se pinta por encima del texto de abajo. */}
-                    <div className="min-h-0 flex-1 overflow-hidden">
-                      <Maqueta prueba={prueba} />
-                    </div>
-                    <div className="shrink-0 border-t border-white/10 p-4">
-                      <div className="apretado text-[17px] leading-tight md:text-[20px]">
-                        {prueba.titulo}
-                      </div>
-                      <div className="mt-2 text-[12px] leading-snug opacity-55">
-                        {prueba.detalle}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+        <div
+          ref={interior}
+          className="w-full"
+          /* Menos aire arriba que antes: la sección ya trae su propio titular. */
+          style={{ paddingTop: "min(120px, 13vh)" }}
+        >
+          <BandaPruebas />
           <div style={{ height: "18vh" }} />
         </div>
       </div>

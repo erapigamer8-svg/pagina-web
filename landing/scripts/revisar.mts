@@ -54,7 +54,7 @@ const diagnostico: any = await pagina.evaluate(`(() => {
       color: getComputedStyle(document.body).color,
       bg: getComputedStyle(document.body).backgroundColor
     },
-    tarjetas: document.querySelectorAll(".bp-card").length
+    tarjetas: document.querySelectorAll(".carta-banda").length
   };
 })()`);
 
