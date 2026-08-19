@@ -28,7 +28,31 @@ Las visitas solo importan como medio para llegar a eso.
 - **Cómo se dice al cliente:** "dejas de perder clientes por no contestar a tiempo"
 - **Mercado objetivo:** pymes locales de servicios — clínicas, gestorías, inmobiliarias, talleres, restaurantes, centros de estética
 - **Idioma:** español
-- **Estado (2026-08-16):** sin clientes todavía, sin vídeos publicados
+- **Estado (2026-08-18):** un sistema en producción, sin vídeos publicados todavía
+
+## Trabajo real hecho (usar como prueba)
+
+**Sistema de atención por WhatsApp para una empresa de fumigación.** Montado sobre Kommo
+con WhatsApp Business conectado. En producción y gestionando volumen real:
+
+| Dato | Valor |
+|---|---|
+| Conversaciones gestionadas | 860 |
+| Solicitudes entrantes | 115 |
+| Leads en el embudo | 745 |
+
+Etapas del embudo: Leads entrantes → Leads → Calificando → Calificado → Cotizado.
+
+**Cómo se puede contar, y cómo no:**
+
+- ✅ "Monté el sistema de atención por WhatsApp de una empresa de fumigación. Gestiona más de 800 conversaciones."
+- ❌ "Mis clientes consiguen…", "cartera de clientes", "llevo N proyectos"
+
+Es un trabajo real y demostrable, pero **uno**. No presentarlo como trayectoria.
+
+**Privacidad:** cualquier captura debe llevar ocultos los nombres del cliente, de sus
+clientes finales, los mensajes y las fotos de perfil. Los números agregados (860, 115, 745)
+sí se pueden enseñar: son resultado propio, no datos personales.
 
 ## Tono de Comunicación
 - Tuteo siempre. Cercano y directo.
@@ -83,7 +107,7 @@ El usuario **sale en cámara**, habla en español, apoya con **capturas de panta
 | Formato | Peso | Nota |
 |---|---|---|
 | Problemas de negocio que la IA resuelve | 40% | Motor de conversión. No requiere clientes previos |
-| Casos reales con resultados | 25% | Máxima prueba. Sin clientes aún → usar demos y montajes propios, **declarados como demo** |
+| Casos reales con resultados | 25% | Máxima prueba. Hay UN sistema real (fumigación, 860 conversaciones) — usarlo. Lo demás, demos declaradas como tales |
 | Tutoriales prácticos n8n/Kommo | 25% | Autoridad y guardados |
 | Novedades de IA | 10% | Solo como gancho de actualidad, siempre aterrizado a la pyme |
 

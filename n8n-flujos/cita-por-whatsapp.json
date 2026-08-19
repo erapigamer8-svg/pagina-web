@@ -1,4 +1,5 @@
 {
+  "id": "ErapsCitaWA0001",
   "name": "Cita por WhatsApp",
   "nodes": [
     {
@@ -7,7 +8,10 @@
       "name": "Empezar",
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
-      "position": [-220, 300]
+      "position": [
+        -220,
+        300
+      ]
     },
     {
       "parameters": {
@@ -17,7 +21,10 @@
       "name": "Mensaje entrante",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [0, 300]
+      "position": [
+        0,
+        300
+      ]
     },
     {
       "parameters": {
@@ -48,7 +55,10 @@
       "name": "¿Pide cita?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
-      "position": [240, 300]
+      "position": [
+        240,
+        300
+      ]
     },
     {
       "parameters": {
@@ -58,7 +68,10 @@
       "name": "Buscar huecos",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [500, 180]
+      "position": [
+        500,
+        180
+      ]
     },
     {
       "parameters": {
@@ -68,7 +81,10 @@
       "name": "Responder al cliente",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [740, 180]
+      "position": [
+        740,
+        180
+      ]
     },
     {
       "parameters": {
@@ -78,26 +94,68 @@
       "name": "Pasar a una persona",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
-      "position": [500, 420]
+      "position": [
+        500,
+        420
+      ]
     }
   ],
   "connections": {
     "Empezar": {
-      "main": [[{ "node": "Mensaje entrante", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Mensaje entrante",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
     "Mensaje entrante": {
-      "main": [[{ "node": "¿Pide cita?", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "¿Pide cita?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
     "¿Pide cita?": {
       "main": [
-        [{ "node": "Buscar huecos", "type": "main", "index": 0 }],
-        [{ "node": "Pasar a una persona", "type": "main", "index": 0 }]
+        [
+          {
+            "node": "Buscar huecos",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Pasar a una persona",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Buscar huecos": {
-      "main": [[{ "node": "Responder al cliente", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "Responder al cliente",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "pinData": {},
-  "settings": { "executionOrder": "v1" }
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "active": false
 }
