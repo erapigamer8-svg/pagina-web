@@ -19,6 +19,14 @@ remotion-app/public/subtitulos/
 landing/_originales/
 landing/capturas/
 
+# Ajustes locales de Obsidian: espacio de trabajo, plugins y caché.
+# Las notas del vault SÍ entran en el repo; esto no, porque cambia cada vez
+# que abres la app y ensuciaría el historial.
+cerebro/.obsidian/workspace.json
+cerebro/.obsidian/workspace-mobile.json
+cerebro/.obsidian/cache
+cerebro/.trash/
+
 # Sistema
 Thumbs.db
 .DS_Store
