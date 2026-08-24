@@ -3,11 +3,106 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Eraps Project</title>
+    <title>Eraps Project — Automatiza la atención de tu negocio por WhatsApp</title>
     <meta
       name="description"
       content="Automatizo la atención y las citas de tu negocio por WhatsApp, con Kommo y n8n."
     />
+    <link rel="canonical" href="https://eraps-project.vercel.app/" />
+
+    <!-- Al compartir el enlace por WhatsApp, que es por donde va a circular. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://eraps-project.vercel.app/" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:site_name" content="Eraps Project" />
+    <meta
+      property="og:title"
+      content="Eraps Project — Automatiza la atención de tu negocio por WhatsApp"
+    />
+    <meta
+      property="og:description"
+      content="Automatizo la atención y las citas de tu negocio por WhatsApp, con Kommo y n8n."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!--
+      Datos estructurados.
+
+      Va aquí, en el HTML servido, y NO inyectado desde React: los rastreadores
+      de IA no ejecutan JavaScript, así que el schema que se añade en cliente no
+      existe para ellos.
+
+      Solo lleva datos verificables. PENDIENTE_CONFIRMAR antes de añadirlos:
+        · dirección postal y ciudad     (no hay ninguna publicada)
+        · correo de contacto            (solo hay WhatsApp)
+        · razón social y datos fiscales (falta aviso legal)
+        · perfiles sociales para sameAs (ninguno enlazado en la web)
+        · areaServed                    (el +52 sugiere México, pero no está dicho)
+
+      `dateModified` lo sella el script de prerenderizado en cada build.
+    -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "ProfessionalService",
+            "@id": "https://eraps-project.vercel.app/#negocio",
+            "name": "Eraps Project",
+            "url": "https://eraps-project.vercel.app/",
+            "description": "Automatización de la atención al cliente por WhatsApp para negocios locales, montada sobre Kommo o a medida con n8n. El negocio conserva su número y sus herramientas.",
+            "telephone": "+528341264154",
+            "knowsAbout": [
+              "Kommo",
+              "n8n",
+              "WhatsApp Business",
+              "automatización de atención al cliente",
+              "reserva automática de citas"
+            ],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Servicios",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Implantación de Kommo",
+                    "description": "WhatsApp organizado: pipeline, bandeja unificada y respuestas automáticas para que no se pierda ningún seguimiento."
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Automatización a medida con n8n",
+                    "description": "Conectar el CRM con lo que el negocio ya usa: agenda, facturación y web."
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://eraps-project.vercel.app/#web",
+            "url": "https://eraps-project.vercel.app/",
+            "name": "Eraps Project",
+            "inLanguage": "es",
+            "publisher": { "@id": "https://eraps-project.vercel.app/#negocio" }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://eraps-project.vercel.app/#pagina",
+            "url": "https://eraps-project.vercel.app/",
+            "name": "Eraps Project — Automatiza la atención de tu negocio por WhatsApp",
+            "isPartOf": { "@id": "https://eraps-project.vercel.app/#web" },
+            "about": { "@id": "https://eraps-project.vercel.app/#negocio" },
+            "inLanguage": "es",
+            "dateModified": "2026-08-24"
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
