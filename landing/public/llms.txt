@@ -1,0 +1,33 @@
+# Eraps Project
+
+> Automatizacion de la atencion al cliente por WhatsApp para negocios locales,
+> montada sobre Kommo o a medida con n8n. El cliente conserva su numero y sus
+> herramientas; lo que cambia es lo que ocurre por detras.
+
+## Que hace
+
+- Responde los mensajes de WhatsApp que entran, a cualquier hora.
+- Pregunta lo justo para calificar al cliente.
+- Reserva la cita en la agenda del negocio.
+- Envia el recordatorio antes de la visita.
+- Escala a una persona cuando el caso lo requiere.
+
+## Para quien
+
+Clinicas, gestorias, talleres, inmobiliarias y centros de estetica: negocios
+locales que venden por WhatsApp y pierden mensajes fuera de horario.
+
+## Con que se monta
+
+- **Kommo** cuando el negocio necesita orden comercial: pipeline, bandeja
+  unificada y Salesbot sin codigo.
+- **n8n** cuando hace falta logica o integraciones que un CRM cerrado no cubre.
+
+## Paginas
+
+- [Inicio](https://eraps-project.vercel.app/): que hace el sistema, como
+  funciona paso a paso y capturas de sistemas en produccion.
+
+## Contacto
+
+WhatsApp: +52 834 126 4154
